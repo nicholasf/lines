@@ -25,17 +25,17 @@ func main() {
 		} 
     }
 
-	var ok bool
+	ok := true
 
 	if len(textFile) == 0 {
 		ok = false
 		fmt.Println("Please provide a TEXT_FILE env var for the location of the file.")
-	} else if len(targetUrl) == 0 {
+	}
+	
+	if len(targetUrl) == 0 {
 		ok = false
 		fmt.Println("Please provide a TARGET_URL env var for the location of the file.")
-	} else {
-		ok = true
-	}
+	} 
 
 	if !ok {
 		panic("Please check env vars")
