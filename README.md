@@ -28,7 +28,6 @@ The following JSON packets would be made:
     "sentence": "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of
 lather on which a mirror and a razor lay crossed.",
     "time": "<current timestamp>",
-    "run": "0
 }
 
 * order - the position of the sentence in the file

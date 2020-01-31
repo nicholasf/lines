@@ -1,3 +1,3 @@
-module github.com/nicholasf/lines-to-json
+module github.com/nicholasf/lines
 
 go 1.13
