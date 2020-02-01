@@ -19,8 +19,6 @@ func logJson(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, e)
 	}
 
-	println(e.Sentence)
-
 	return c.JSON(http.StatusOK, e)
 }
 
@@ -29,5 +27,5 @@ func main() {
 
 	e.POST("/json", logJson)
 
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start("localhost:1323"))
 }

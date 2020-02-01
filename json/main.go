@@ -49,8 +49,5 @@ func main() {
 		panic(err)
 	}
 
-	for {
-		e := <-events
-		sender.Push(e, TARGET_URL)
-	}
+	sender.Push(events, TARGET_URL)
 }

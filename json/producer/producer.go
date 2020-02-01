@@ -12,7 +12,8 @@ type Event struct {
 }
 
 const (
-	PERIOD = "."
+	PERIOD       = "."
+	BUFFER_LIMIT = 1
 )
 
 /*
@@ -33,7 +34,7 @@ func Read(p string) (chan *Event, error) {
 		return nil, err
 	}
 
-	var events = make(chan *Event, 1)
+	var events = make(chan *Event, BUFFER_LIMIT)
 
 	go parse(content, events)
 	return events, nil
