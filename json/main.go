@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/nicholasf/lines/producer"
-	"github.com/nicholasf/lines/sender"
+	"github.com/nicholasf/lines/json/producer"
+	"github.com/nicholasf/lines/json/sender"
 )
 
 const (
