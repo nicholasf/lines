@@ -1,8 +1,8 @@
 package producer
 
 import (
-	"fmt"
 	"io/ioutil"
+	"strings"
 	"time"
 )
 
@@ -12,8 +12,7 @@ type Event struct {
 }
 
 const (
-	PARSE_DISTANCE = 10000
-	PERIOD         = "."
+	PERIOD = "."
 )
 
 /*
@@ -41,5 +40,33 @@ func Read(p string) (chan *Event, error) {
 }
 
 func parse(b []byte, events chan *Event) {
-	fmt.Printf("parsing ....")
+	content := string(b[:])
+	pieces := strings.Split(content, PERIOD)
+
+	var sentence string
+
+	for _, s := range pieces {
+
+		// if there is no PERIOD, append to sentence and repeat
+		if len(pieces) == 1 {
+			sentence = sentence + s
+			continue
+		}
+
+		// otherwise, the last piece becomes the new sentence
+		// and all prior pieces become events
+		sentence = pieces[len(pieces)-1]
+
+		for i := 0; i < len(pieces)-1; i++ {
+			events <- &Event{
+				Sentence: pieces[i],
+				When:     time.Now(),
+			}
+		}
+	}
+
+	events <- &Event{
+		Sentence: "1 2 3",
+		When:     time.Now(),
+	}
 }

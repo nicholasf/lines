@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/nicholasf/lines/producer"
+	"github.com/nicholasf/lines/sender"
 )
 
 const (
@@ -50,7 +51,6 @@ func main() {
 
 	for {
 		e := <-events
-		fmt.Println(e.Sentence)
+		sender.Push(e, TARGET_URL)
 	}
-
 }
