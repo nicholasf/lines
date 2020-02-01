@@ -7,8 +7,8 @@ import (
 )
 
 type Event struct {
-	Sentence string
-	When     time.Time
+	Sentence string    `json:"sentence"`
+	When     time.Time `json:"when"`
 }
 
 const (
@@ -63,10 +63,5 @@ func parse(b []byte, events chan *Event) {
 				When:     time.Now(),
 			}
 		}
-	}
-
-	events <- &Event{
-		Sentence: "1 2 3",
-		When:     time.Now(),
 	}
 }
