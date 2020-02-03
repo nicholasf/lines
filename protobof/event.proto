@@ -1,0 +1,7 @@
+syntax="proto3";
+
+message SearchRequest {
+  string sentence = 1;
+  string when = 2;
+}
+

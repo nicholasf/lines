@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"time"
 
@@ -18,6 +19,8 @@ func logJson(c echo.Context) error {
 	if err := c.Bind(e); err != nil {
 		return c.JSON(http.StatusBadRequest, e)
 	}
+
+	log.Printf(e.Sentence)
 
 	return c.JSON(http.StatusOK, e)
 }

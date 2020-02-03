@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/nicholasf/lines/json/producer"
 )
@@ -17,6 +18,8 @@ func Push(events chan *producer.Event, url string) {
 		payload := bytes.NewBuffer(b)
 
 		resp, err := http.Post("http://127.0.0.1:1323/json", "application/json", payload)
+
+		time.Sleep(1000 * time.Millisecond)
 
 		if err != nil {
 			log.Println("Error communicating with localhost:1323: ", err.Error())
